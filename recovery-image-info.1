@@ -1,0 +1,36 @@
+.TH RECOVERY-IMAGE-INFO 1 2018-05-22
+.SH NAME
+recovery-image-info \- read info-section from Baikal-T recovery image
+.SH SYNOPSIS
+.B recovery-image-info
+.RI [ options ]
+.SH DESCRIPTION
+This manual page documents briefly the
+.B recovery-image-info
+command.
+.PP
+\fBrecovery-image-info\fP is a utility that parses the informational section of
+Baikal-T SoC SPI-flash image and print detailed description of passed ROM-image
+or MTD file.
+.SH OPTIONS
+This program supports the following options:
+.TP
+.B \-r, \-\-rom=<name>
+Use file <name> as ROM-image to parse instead of default /dev/mtd2.
+.TP
+.B \-o, \-\-offset=<address>
+Move the ROM-image file curser to the specified <address> insted of default 0
+position.
+.TP
+.B \-h, \-\-help
+Print help message and exit
+.TP
+.B \-v, \-\-version
+Output version information and exit
+
+.SH SEE ALSO
+.BR https://github.com/T-Platforms/recovery-image-info
+.SH AUTHOR
+recovery-image-info was written by Sergey Semin (T-platforms).
+.PP
+This manual page was written by Sergey Semin <fancer.lancer@gmail.com>
