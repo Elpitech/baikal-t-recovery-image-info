@@ -1,5 +1,5 @@
 AC_PREREQ(2.69)
-AC_INIT([recovery-image-info], [1.0.0], [fancer.lancer@gmail.com])
+AC_INIT([Recovery Image Information parser], [1.0.0], [fancer.lancer@gmail.com])
 
 AC_ARG_WITH(static, [  --with-static            enable static linking])
 
@@ -10,6 +10,22 @@ then
 else
   AC_MSG_NOTICE([Compiling with dynamically linked libraries.])
 fi
+
+AC_ARG_VAR(RII_DEFAULT_NAME,  [ default Baikal-T ROM-image file name (/dev/mtd2 if not specified)])
+if test "$RII_DEFAULT_NAME" == ""
+then
+  RII_DEFAULT_NAME="/dev/mtd2"
+fi
+AC_DEFINE_UNQUOTED([RII_DEFAULT_NAME], ["$RII_DEFAULT_NAME"],
+                   [Default Baikal-T ROM-image file name])
+
+AC_ARG_VAR(RII_DEFAULT_ADDR, [ default info-section offset (0 if not specified)])
+if test "$RII_DEFAULT_ADDR" == ""
+then
+  RII_DEFAULT_ADDR="0x0U"
+fi
+AC_DEFINE_UNQUOTED([RII_DEFAULT_ADDR], [$RII_DEFAULT_ADDR],
+                   [Default info-section offset])
 
 AM_INIT_AUTOMAKE([-Wall -Werror foreign])
 AC_CONFIG_SRCDIR([src/])
@@ -30,7 +46,7 @@ timestamp=$(date)
 AC_MSG_CHECKING([current timestamp])
 AC_MSG_RESULT([$timestamp])
 
-AC_DEFINE_UNQUOTED([RECOVEY_IMAGE_INFO_TIMESTAMP],
+AC_DEFINE_UNQUOTED([RII_TIMESTAMP],
                    "$username @ $hostname on $timestamp",
                    [Timestamp when ./configure was executed])
 

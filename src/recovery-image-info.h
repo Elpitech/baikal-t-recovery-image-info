@@ -11,7 +11,10 @@
 
 #include <sys/types.h>
 #include <stdint.h>
+
+#ifdef HAVE_CONFIG_H
 #include "config.h"
+#endif
 
 #define RII_VERSION			PACKAGE_VERSION
 
@@ -27,8 +30,16 @@
 #define RII_ERR_INVALID_MAG	-7
 #define RII_ERR_INVALID_CRC	-8
 
-#define RII_DEFAULT_NAME	"/dev/mtd2"
-#define RII_DEFAULT_ADDR	0x0U
+#define RII_KB(bytes) ((bytes) / 1024)
+#define RII_MB(bytes) ((bytes) / 1024 / 1024)
+
+#ifndef RII_DEFAULT_NAME
+#	define RII_DEFAULT_NAME	"/dev/mtd2"
+#endif
+
+#ifndef RII_DEFAULT_ADDR
+#	define RII_DEFAULT_ADDR	0x0U
+#endif
 
 #define RII_NAME_LEN	32
 #define RII_VERS_LEN	16
@@ -60,8 +71,8 @@ struct rii_image_info {
 	char machine[RII_NAME_LEN];
 	char hostname[RII_NAME_LEN];
 
-	char kernel_version[RII_VERS_LEN];
 	char u_boot_version[RII_VERS_LEN];
+	char kernel_version[RII_VERS_LEN];
 	char compiler_version[RII_VERS_LEN];
 	char compiler_features[RII_SLIST_LEN];
 	char date[RII_DATE_LEN];

@@ -99,8 +99,14 @@
 /* Define to the version of this package. */
 #undef PACKAGE_VERSION
 
+/* Default info-section offset */
+#undef RII_DEFAULT_ADDR
+
+/* Default Baikal-T ROM-image file name */
+#undef RII_DEFAULT_NAME
+
 /* Timestamp when ./configure was executed */
-#undef RECOVEY_IMAGE_INFO_TIMESTAMP
+#undef RII_TIMESTAMP
 
 /* Define to 1 if you have the ANSI C header files. */
 #undef STDC_HEADERS
