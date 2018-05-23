@@ -673,6 +673,7 @@ am__isrc
 INSTALL_DATA
 INSTALL_SCRIPT
 INSTALL_PROGRAM
+RII_MAGIC
 RII_DEFAULT_ADDR
 RII_DEFAULT_NAME
 target_alias
@@ -725,6 +726,7 @@ host_alias
 target_alias
 RII_DEFAULT_NAME
 RII_DEFAULT_ADDR
+RII_MAGIC
 CC
 CFLAGS
 LDFLAGS
@@ -1364,6 +1366,7 @@ Some influential environment variables:
               specified)
   RII_DEFAULT_ADDR
               default info-section offset (0 if not specified)
+  RII_MAGIC   info-section magic number (default 0xDEADBEEFBAADF00D)
   CC          C compiler command
   CFLAGS      C compiler flags
   LDFLAGS     linker flags, e.g. -L<lib dir> if you have libraries in a
@@ -2301,6 +2304,17 @@ fi
 
 cat >>confdefs.h <<_ACEOF
 #define RII_DEFAULT_ADDR $RII_DEFAULT_ADDR
+_ACEOF
+
+
+
+if test "$RII_MAGIC" == ""
+then
+  RII_MAGIC="0xDEADBEEFBAADF00DULL"
+fi
+
+cat >>confdefs.h <<_ACEOF
+#define RII_MAGIC $RII_MAGIC
 _ACEOF
 
 

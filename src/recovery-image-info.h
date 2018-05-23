@@ -41,13 +41,15 @@
 #	define RII_DEFAULT_ADDR	0x0U
 #endif
 
+#ifndef RII_MAGIC
+#	define RII_MAGIC	0xDEADBEEFBAADF00DULL
+#endif
+
 #define RII_NAME_LEN	64
 #define RII_VERS_LEN	16
 #define RII_DATE_LEN	16
 #define RII_SLIST_LEN	128
 #define RII_LLIST_LEN	512
-
-#define RII_MAGIC			0xDEADBEEFBAADF00DULL
 
 enum rii_msg_mode {
 	RII_PRINT_BOTH,

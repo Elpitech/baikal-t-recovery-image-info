@@ -105,6 +105,9 @@
 /* Default Baikal-T ROM-image file name */
 #undef RII_DEFAULT_NAME
 
+/* Info-section magic number */
+#undef RII_MAGIC
+
 /* Timestamp when ./configure was executed */
 #undef RII_TIMESTAMP
 

@@ -27,6 +27,14 @@ fi
 AC_DEFINE_UNQUOTED([RII_DEFAULT_ADDR], [$RII_DEFAULT_ADDR],
                    [Default info-section offset])
 
+AC_ARG_VAR(RII_MAGIC, [ info-section magic number (default 0xDEADBEEFBAADF00D)])
+if test "$RII_MAGIC" == ""
+then
+  RII_MAGIC="0xDEADBEEFBAADF00DULL"
+fi
+AC_DEFINE_UNQUOTED([RII_MAGIC], [$RII_MAGIC],
+                   [Info-section magic number])
+
 AM_INIT_AUTOMAKE([-Wall -Werror foreign])
 AC_CONFIG_SRCDIR([src/])
 AC_CONFIG_HEADER([src/config.h])
