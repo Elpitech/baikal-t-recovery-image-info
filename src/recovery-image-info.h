@@ -41,7 +41,7 @@
 #	define RII_DEFAULT_ADDR	0x0U
 #endif
 
-#define RII_NAME_LEN	32
+#define RII_NAME_LEN	64
 #define RII_VERS_LEN	16
 #define RII_DATE_LEN	16
 #define RII_SLIST_LEN	128
