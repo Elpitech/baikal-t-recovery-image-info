@@ -178,29 +178,28 @@ static void rii_print_info(struct rii_data *data)
 	struct rii_image_info *info = data->info;
 	struct tm tm = {0};
 
-	printf("Baikal-T Recovery image information:\n\n");
-	printf("Distribution: '%s %s' for board '%s'\n", info->distro, info->version, info->machine);
-	printf("Hostname: '%s'\n", info->hostname);
-	printf("Core systems: u-boot %s, kernel %s\n", info->u_boot_version, info->kernel_version);
-	printf("Built by: gcc %s with features %s\n", info->compiler_version, info->compiler_features);
-	strptime(info->date, "%Y%m%d%H%M%S", &tm);
-	printf("Build date: %d.%d.%d %d:%d:%d\n", tm.tm_mday, tm.tm_mon, tm.tm_year, tm.tm_hour,
+	printf("Distribution:        %s %s for board %s\n", info->distro, info->version, info->machine);
+	printf("Hostname:            %s\n", info->hostname);
+	printf("Core systems:        u-boot %s, kernel %s\n", info->u_boot_version, info->kernel_version);
+	printf("Built by:            gcc %s with features %s\n", info->compiler_version, info->compiler_features);
+	strptime(info->datetime, "%Y%m%d%H%M%S", &tm);
+	printf("Build date:          %d/%d/%d %d:%d:%d\n", tm.tm_mon + 1, tm.tm_mday, tm.tm_year + 1900, tm.tm_hour,
 			tm.tm_min, tm.tm_sec);
-	printf("SPI-flash info: address 0x%08x, size %uKB (%u)\n", be32toh(info->rom_base),
+	printf("SPI-flash info:      address 0x%08x, size %uKB (%u)\n", be32toh(info->rom_base),
 			RII_KB(be32toh(info->rom_size)), be32toh(info->rom_size));
-	printf("Bootloader section: offset 0x%08x, size %uKB (%u)\n", be32toh(info->bootloader_base),
+	printf("Bootloader section:  offset 0x%08x, size %uKB (%u)\n", be32toh(info->bootloader_base),
 			RII_KB(be32toh(info->bootloader_size)), be32toh(info->bootloader_size));
 	printf("Environment section: offset 0x%08x, size %uKB (%u)\n", be32toh(info->environment_base),
 			RII_KB(be32toh(info->environment_size)), be32toh(info->environment_size));
 	printf("Information section: offset 0x%08x, size %uKB (%u)\n", be32toh(info->information_base),
 			RII_KB(be32toh(info->information_size)), be32toh(info->information_size));
-	printf("Fitimage section: offset 0x%08x, size %uKB (%u), %s\n", be32toh(info->fitimage_base),
+	printf("Fitimage section:    offset 0x%08x, size %uKB (%u), %s\n", be32toh(info->fitimage_base),
 			RII_KB(be32toh(info->fitimage_size)), be32toh(info->fitimage_size),
 			info->fitimage_signed ? "signed" : "unsigned");
-	printf("System utils: %s\n", info->system_utils);
-	printf("Extra utils: %s\n", info->extra_utils);
-	printf("Test benches: %s\n", info->test_benches);
-	printf("Extra linguas: %s\n", info->extra_linguas);
+	printf("System utils:        %s\n", info->system_utils);
+	printf("Extra utils:         %s\n", info->extra_utils);
+	printf("Test benches:        %s\n", info->test_benches);
+	printf("Extra linguas:       %s\n", info->extra_linguas);
 }
 
 int main(int argc, char *argv[])

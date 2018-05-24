@@ -77,7 +77,7 @@ struct rii_image_info {
 	char kernel_version[RII_VERS_LEN];
 	char compiler_version[RII_VERS_LEN];
 	char compiler_features[RII_SLIST_LEN];
-	char date[RII_DATE_LEN];
+	char datetime[RII_DATE_LEN];
 
 	uint32_t rom_base;
 	uint32_t rom_size;
