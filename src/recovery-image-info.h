@@ -92,6 +92,11 @@ struct rii_image_info {
 	uint32_t fitimage_size;
 	uint8_t fitimage_signed;
 
+	uint32_t vmlinuz_ldaddr;
+	uint32_t vmlinux_ldaddr;
+	uint32_t fdt_ldaddr;
+	uint32_t rd_ldaddr;
+
 	char system_utils[RII_LLIST_LEN];
 	char extra_utils[RII_LLIST_LEN];
 	char test_benches[RII_LLIST_LEN];

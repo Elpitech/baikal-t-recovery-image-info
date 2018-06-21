@@ -196,6 +196,10 @@ static void rii_print_info(struct rii_data *data)
 	printf("Fitimage section:    offset 0x%08x, size %uKB (%u), %s\n", be32toh(info->fitimage_base),
 			RII_KB(be32toh(info->fitimage_size)), be32toh(info->fitimage_size),
 			info->fitimage_signed ? "signed" : "unsigned");
+	printf("Kernel load address: vmlinuz 0x%08x, vmlinux 0x%08x\n", be32toh(info->vmlinuz_ldaddr),
+			be32toh(info->vmlinux_ldaddr));
+	printf("FDT load address:    0x%08x\n", be32toh(info->fdt_ldaddr));
+	printf("Initrd load address: 0x%08x\n", be32toh(info->rd_ldaddr));
 	printf("System utils:        %s\n", info->system_utils);
 	printf("Extra utils:         %s\n", info->extra_utils);
 	printf("Test benches:        %s\n", info->test_benches);
