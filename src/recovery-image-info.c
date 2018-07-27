@@ -70,7 +70,7 @@ static int rii_parse_args(int argc, char *argv[], struct rii_data *data)
 		case 'r':
 			data->fname = optarg;
 			break;
-		case 'w':
+		case 'o':
 			errno = 0;
 			data->offset = strtol(optarg, &endptr, 0);
 			if (errno || optarg == endptr) {
