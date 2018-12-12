@@ -19,6 +19,7 @@
 #include <fcntl.h>
 
 #include <endian.h>
+#define __USE_XOPEN
 #include <time.h>
 
 #include "cksum_memcrc.h"
@@ -177,14 +178,16 @@ static void rii_print_info(struct rii_data *data)
 {
 	struct rii_image_info *info = data->info;
 	struct tm tm = {0};
+	char buf[64];
+
+	strptime(info->datetime, "%04Y%02m%02d%02H%02M%02S", &tm);
+	strftime(buf, 64, "%c", &tm);
 
 	printf("Distribution:        %s %s for board %s\n", info->distro, info->version, info->machine);
 	printf("Hostname:            %s\n", info->hostname);
 	printf("Core systems:        u-boot %s, kernel %s\n", info->u_boot_version, info->kernel_version);
 	printf("Built by:            gcc %s with features %s\n", info->compiler_version, info->compiler_features);
-	strptime(info->datetime, "%Y%m%d%H%M%S", &tm);
-	printf("Build date:          %d/%d/%d %d:%d:%d\n", tm.tm_mon + 1, tm.tm_mday, tm.tm_year + 1900, tm.tm_hour,
-			tm.tm_min, tm.tm_sec);
+	printf("Build date:          %s\n", buf);
 	printf("SPI-flash info:      address 0x%08x, size %uKB (%u)\n", be32toh(info->rom_base),
 			RII_KB(be32toh(info->rom_size)), be32toh(info->rom_size));
 	printf("Bootloader section:  offset 0x%08x, size %uKB (%u)\n", be32toh(info->bootloader_base),
