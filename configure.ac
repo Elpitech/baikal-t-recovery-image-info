@@ -1,6 +1,7 @@
 AC_PREREQ(2.69)
 AC_INIT([Recovery Image Information parser], [1.0.0], [fancer.lancer@gmail.com])
 
+AC_CONFIG_AUX_DIR([config])
 AC_ARG_WITH(static, [  --with-static            enable static linking])
 
 if test "$with_static" = "yes"
